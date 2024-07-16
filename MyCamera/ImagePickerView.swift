@@ -7,9 +7,20 @@
 
 import SwiftUI
 
-struct ImagePickerView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct ImagePickerView: UIViewRepresentable {
+    //UIImagePickerController（写真撮影）が表示されているかを管理
+    @Binding var isShowSheet: Bool
+    //撮影した写真を格納する変数
+    @Binding var captureImage: UIImage?
+    
+    //Coordinatorでコントローラのdelegateを管理
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+        //ImagePickerView型の定数を用意
+        let parent: ImagePickerView
+        //イニシャライザ
+        init(_ parent: ImagePickerView) {
+            self.parent = parent
+        }
     }
 }
 
