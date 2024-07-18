@@ -21,6 +21,20 @@ struct ImagePickerView: UIViewRepresentable {
         init(_ parent: ImagePickerView) {
             self.parent = parent
         }
+        //撮影が終わった時に呼ばれるdelegateメソッド、必ず必要
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            //撮影した写真をcaputureImageに保存
+            if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+                parent.captureImage = originalImage
+            }
+            //sheetを閉じる
+            parent.isShowSheet.toggle()
+        }
+        //キャンセルボタンが選択された時に呼ばれるdelegateメソッド。必ず必要！
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            //sheetを閉じる
+            parent.isShowSheet.toggle()
+        }
     }
 }
 
