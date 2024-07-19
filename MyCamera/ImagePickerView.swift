@@ -36,6 +36,11 @@ struct ImagePickerView: UIViewRepresentable {
             parent.isShowSheet.toggle()
         }
     }
+    //Coordinatorを生成、SwiftUIによって自動的に呼び出し
+    func makeCoordinator() -> Coordinator{
+        //Coordinatorクラスのインスタンスを生成
+        Coordinator(self)
+    }
 }
 
 #Preview {
