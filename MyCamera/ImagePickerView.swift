@@ -41,6 +41,17 @@ struct ImagePickerView: UIViewRepresentable {
         //Coordinatorクラスのインスタンスを生成
         Coordinator(self)
     }
+    //Viewを生成するときに実行
+    func makeUIViewController(context: Context) -> UIImagePickerController{
+        //UIImagePickerControllerのインスタンスを生成
+        let myImagePickerController = UIImagePickerController()
+        //sourceTypeにcameraを設定
+        myImagePickerController.sourceType = .camera
+        //delegate設定
+        myImagePickerController.delegate = context.coordinator
+        //UIImagePickerControllerを返す
+        return myImagePickerController
+    }
 }
 
 #Preview {
