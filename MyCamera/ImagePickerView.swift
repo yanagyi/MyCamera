@@ -52,6 +52,10 @@ struct ImagePickerView: UIViewRepresentable {
         //UIImagePickerControllerを返す
         return myImagePickerController
     }
+    //Viewが更新された時に実行
+    func updateUIViewController(_ uiViewController: UIImagePickerController,context: Context){
+        //処理なし
+    }
 }
 
 #Preview {
